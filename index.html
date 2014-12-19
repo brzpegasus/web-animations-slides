@@ -1,0 +1,504 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Web Animations</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+	<link rel="stylesheet" href="shower/themes/custom/styles/custom.css">
+	<link rel="stylesheet" href="pictures/octicons/octicons.css">
+</head>
+<body class="list">
+  <script async="" src="http://codepen.io/assets/embed/ei.js"></script>
+	<header class="caption">
+		<h1>Web Animations</h1>
+		<p>The Road to a Bright and Animated Future</p>
+	</header>
+	<section class="slide" id="Cover"><div>
+		<h2>Web Animations</h2>
+		<p>The Road to a Bright and Animated Future</p>
+    <div class="front-credits">
+      <p class="note">
+        Estelle DeBlois<br><span class="mega-octicon octicon-mark-github"></span> <a href="github.com/brzpegasus">@brzpegasus</a>
+      </p>
+    </div>
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				font-style:italic;
+				font-size:20px;
+				}
+		</style>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Animation-Related Specifications</h2>
+		<ul>
+			<li>CSS Transitions</li>
+			<li>CSS Animations</li>
+      <li>SVG Animations</li>
+      <li>requestAnimationFrame()</li>
+		</ul>
+	</div></section>
+	<section class="slide shout"><div>
+    <h2>CSS Transitions</h2>
+	</div></section>
+	<section class="slide"><div>
+    <h2>CSS Transitions</h2>
+    <p><a href="http://www.w3.org/TR/css3-transitions/">http://www.w3.org/TR/css3-transitions/</a></p>
+    <p>A way to make CSS properties change smoothly from one value to another over a specified duration.</p>
+	</div></section>
+  <section class="slide"><div>
+    <h2>CSS Transition Properties</h2>
+    <pre>
+      <code>div {
+  transition-property: <mark>opacity</mark>;
+  transition-duration: 2s;
+}</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Transition Properties</h2>
+    <pre>
+      <code>div {
+  transition-property: <mark>opacity</mark>, <mark class="important">left</mark>;
+  transition-duration: <mark>2s</mark>, <mark class="important">4s</mark>;
+}</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Transition Properties</h2>
+    <pre>
+      <code>div {
+  transition-property: opacity;
+  transition-duration: 2s;
+  transition-timing-function: ease;
+  transition-delay: 1s;
+}</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Transition Shorthand</h2>
+    <pre>
+      <code>div {
+  transition: opacity 2s ease 1s;
+}</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>TransitionEvent</h2>
+    <pre>
+      <code>var elem = document.querySelector('.box');
+elem.addEventListener(<mark>'transitionend'</mark>, onTransitionEnd);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Transition Demo</h2>
+<div data-height="268" data-theme-id="10784" data-slug-hash="MYeOXE" data-default-tab="css" data-user="edeblois" class='codepen'><pre><code></code></pre>
+</div>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Transition Drawbacks</h2>
+    <ul>
+      <li>Limited control over how the animation progresses</li>
+      <li>Still need to use JavaScript to toggle between states by adding or removing classes.</li>
+    </ul>
+  </div></section>
+	<section class="slide shout"><div>
+    <h2>CSS Animations</h2>
+	</div></section>
+	<section class="slide"><div>
+    <h2>CSS Animations</h2>
+    <p><a href="http://www.w3.org/TR/css3-animations/">http://www.w3.org/TR/css3-animations/</a></p>
+    <p>Keyframes control how CSS properties should change at various points during the animation.</p>
+	</div></section>
+  <section class="slide"><div>
+    <h2>Applying a CSS Animation</h2>
+    <pre><code>div {
+  animation-name: <mark>diagonal-slide</mark>;
+  animation-duration: 5s;
+}</code></pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Applying a CSS Animation</h2>
+    <pre><code>div {
+  animation-name: <mark>diagonal-slide</mark>;
+  animation-duration: 5s;
+  animation-iteration-count: 10;
+  animation-delay: 0s;
+}</code></pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>@keyframes Rule</h2>
+    <pre>
+      <code>@keyframes <mark>diagonal-slide</mark> {
+  from { left: 0; top: 0; }
+  to   { left: 100px; top: 100px; }
+}</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>@keyframes Rule</h2>
+    <pre>
+      <code>@keyframes <mark>bounce</mark> {
+  0%   { top: 100px; animation-timing-function: ease-out; }
+  25%  { top: 50px;  animation-timing-function: ease-in;  }
+  50%  { top: 100px; animation-timing-function: ease-out; }
+  75%  { top: 75px;  animation-timing-function: ease-in;  }
+  100% { top: 100px; }
+}</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>AnimationEvent</h2>
+    <p>DOM events are triggered at the start and end of the animation, and after each iteration:
+    <b>animationstart</b>, <b>animationend</b>, and <b>animationiteration</b>.</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Animation Demo</h2>
+<div data-height="268" data-theme-id="10784" data-slug-hash="GgqOBR" data-default-tab="css" data-user="edeblois" class='codepen'><pre><code></code></pre>
+</div>
+  </div></section>
+  <section class="slide"><div>
+    <h2>CSS Animation Drawbacks</h2>
+    <ul>
+      <li>Cannot respond to user inputs or to a changing environment.</li>
+      <li>Cannot be composed, sequenced, or run in parallel.</li>
+    </ul>
+  </div></section>
+	<section class="slide shout"><div>
+    <h2>SVG Animations</h2>
+	</div></section>
+	<section class="slide"><div>
+    <h2>SVG Animations</h2>
+    <p><a href="http://www.w3.org/TR/SVG11/animate.html">http://www.w3.org/TR/SVG11/animate.html</a></p>
+    <p>Animation features from <b>SMIL Animation</b> Specification + SVG-specific animation extensions</p>
+    <p class="note">SMIL = Synchronized Multimedia Integration Language</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Markup</h2>
+    <div data-height="268" data-theme-id="10784" data-slug-hash="JoKJXL" data-default-tab="null" data-user="edeblois" class='codepen'></div>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation from Script</h2>
+    <div data-height="268" data-theme-id="10784" data-slug-hash="NPrgrq" data-default-tab="null" data-user="edeblois" class='codepen'></div>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animated SVG Content in D3.js Charts</h2>
+    <div data-height="400" data-theme-id="10784" data-slug-hash="dPXRXg" data-default-tab="result" data-user="edeblois" class='codepen'></div>
+  </div></section>
+  <section class="slide"><div>
+    <h2>SVG Animation Drawbacks</h2>
+    <ul>
+      <li>Cannot be applied to HTML content</li>
+      <li>More expressive than CSS animations but also more complicated</li>
+    </ul>
+  </section>
+	<section class="slide shout"><div>
+    <h2>Script-based Animations</h2>
+	</div></section>
+	<section class="slide"><div>
+    <h2>Timing Control for Script-based Animations</h2>
+    <p><a href="http://www.w3.org/TR/animation-timing/">http://www.w3.org/TR/animation-timing/</a></p>
+    <p>API for writing animations where the browser is in control of the animation rate.</p>
+	</div></section>
+  <section class="slide"><div>
+    <h2>requestAnimationFrame()</h2>
+    <p><code>requestAnimationFrame()</code> instead of <b>setTimeout()</b> or <b>setInterval()</b> to schedule an animation frame update.</p>
+  </section>
+  <section class="slide"><div>
+    <h2>requestAnimationFrame()</h2>
+    <pre>
+      <code>var requestId;
+<b>function animate(time) {</b>
+  // Update properties and attributes
+  // then queue up another callback
+  requestId = window.requestAnimationFrame(animate);
+<b>}</b>
+requestId = <mark>window.requestAnimationFrame(<b>animate</b>);</mark></code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Cancelling an Animation</h2>
+    <pre><code>window.cancelAnimationFrame(requestId);</code></pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Frame Requests</h2>
+    <ul>
+      <li>Every <code>Document</code> has an <b>animation frame request callback list</b>.</li>
+      <li>Browser executes callbacks in the list at an interval matching the display's refresh rate.</li>
+    </ul>
+  </section>
+  <section class="slide"><div>
+    <h2>Script-Based Animation Benefits & Drawbacks</h2>
+    <ul>
+      <li>Control of value changes at any step of the animation.</li>
+      <li>Powerful JS-based animation libraries exist: GSAP, Velocity.</li>
+      <li>However, jank can happen if the main thread is busy.</li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Recap</h2>
+		<table>
+		<tr class="next">
+			<th scope="row">CSS Transitions</th>
+      <td>Limited control over animation progress.</td>
+		</tr>
+		<tr class="next">
+			<th scope="row">CSS Animations</th>
+			<td>Still can't react to changing context.</td>
+		</tr>
+		<tr class="next">
+			<th scope="row">SVG Animations</th>
+			<td>Expressive but complicated. No HTML.</td>
+		</tr>
+		<tr class="next">
+			<th scope="row">requestAnimationFrame()</th>
+			<td>Not declarative. Uses the main thread.</td>
+		</tr>
+		</table>
+  </div></section>
+	<section class="slide shout"><div>
+    <h2>Web Animations</h2>
+    <p><a href="http://w3c.github.io/web-animations/">http://w3c.github.io/web-animations/</a></p>
+	</div></section>
+  <section class="slide"><div>
+    <h2>One Specification to Rule Them All</h2>
+    <ul>
+      <li>Encompass common features of all previous specifications</li>
+      <li>Address deficiencies in previous specifications</li>
+      <li>Backwards-compatible</li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Performance</h2>
+    <ul>
+      <li>Animations can be created from scripts</li>
+      <li>Animations execute in their own thread</li>
+      <li>Same performance characteristics as animations defined by markup</li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Abstract Model + API</h2>
+    <ul>
+      <li>Timing Model</li>
+      <li>Animation Model</li>
+      <li>API to interact with those models from script</li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem, effect, timing);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem, <mark>effect</mark>, timing);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem,
+  <mark>{ left: '100px', top: '300px' }</mark>,
+  timing);</code>
+    </pre>
+    <p class="note">Properties to animate</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem, [
+    <mark>{ offset: 0,   left: '35px' },</mark>
+    <mark>{ offset: 0.5, left: '50px' },</mark>
+    <mark>{ offset: 1,   left: '70px' }</mark>
+  ], timing);</code>
+    </pre>
+    <p class="note">Keyframes</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem,
+  <mark>new MotionPathEffect("M100 250C100 50 400 50 400 250")</mark>,
+  timing);</code>
+    </pre>
+    <p class="note"><code>AnimationEffect</code> object</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem,
+  <mark>function(time) { /* Custom animation */ }</mark>,
+  timing);</code>
+    </pre>
+    <p class="note">Callback function</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem, effect, <mark>timing</mark>);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem, effect, <mark>3000</mark>);</code>
+    </pre>
+    <p class="note">Iteration duration</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Object</h2>
+    <pre>
+      <code>var anim = new Animation(elem, effect,
+  <mark>{ duration: 3000, playbackRate: 2 }</mark>);</code>
+    </pre>
+    <p class="note">Multiple timing properties</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Timing Dictionaries</h2>
+    <ul>
+      <li>duration</li>
+      <li>iterations</li>
+      <li>fill</li>
+      <li>delay</li>
+      <li>playbackRate</li>
+      <li>direction</li>
+      <li>easing</li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Timing Control</h2>
+    <p>Animations can be <strong>synchronized</strong> and <strong>sequenced</strong>.</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Running Animations in Parallel</h2>
+    <pre>
+      <code>var group = new AnimationGroup([
+    new Animation(...),
+    new Animation(...)
+  ]);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Running Animations in Sequence</h2>
+    <pre>
+      <code>var sequence = new AnimationSequence([
+    new Animation(...),
+    new Animation(...)
+  ]);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Nesting Animations</h2>
+    <pre>
+      <code>var animationGroup = new AnimationGroup([
+    new AnimationSequence([
+      new Animation(...),
+      new Animation(...),
+    ]),
+    new Animation(...)
+  ]);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>To play an Animation, you need...</h2>
+  </div></section>
+  <section class="slide"><div>
+    <h2>... an AnimationPlayer</h2>
+    <pre>
+      <code>var player = document.timeline.play(myAnimation);</code>
+    </pre>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Playback Control</h2>
+    <p><code>AnimationPlayer</code> objects can be used to <b>play()</b>, <b>pause()</b>, <b>seek</b>, <b>reverse()</b>, <b>slow down</b>, or <b>speed up</b> the playback of an animation.</p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>element.animate()</h2>
+    <pre>
+      <code>var player = element.animate({ left: '100px' }, 3000);</code>
+    </pre>
+  </section>
+  <section class="slide"><div>
+    <h2>Early Implementers</h2>
+    <ul>
+      <li><code>element.animate()</code> landed in Chrome 36
+      <li>Playback control in Chrome 39, including <code>play()</code>, <code>pause()</code>, and <code>reverse()</code></li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Polyfills</h2>
+      <li><a href="https://github.com/web-animations/web-animations-js">web-animations-js</a>: Lightweight Web Animations Polyfill</li>
+      <li><a href="https://github.com/web-animations/web-animations-next">web-animations-next</a>: Polyfill for all proposed Web Animations API</li>
+      <li>Powers animation elements in <a href="https://www.polymer-project.org/docs/elements/core-elements.html#core-animation">Polymer</a></li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>element.animate() in Action</h2>
+    <div data-height="268" data-theme-id="10784" data-slug-hash="dPXvxN" data-default-tab="js" data-user="edeblois" class='codepen'></div>
+  </div></section>
+	<section class="slide"><div>
+    <h2>Cat Image Sprite</h2>
+    <div class="center"><img src="pictures/cat_sprite.png" alt="" height="380"></div>
+	</div></section>
+  <section class="slide"><div>
+    <h2>Animation Synchronization</h2>
+    <div data-height="380" data-theme-id="10784" data-slug-hash="myEmLj" data-default-tab="result" data-user="edeblois" class='codepen'></div>
+    <p class="note tiny">Adapted from <a href="http://codepen.io/rachelnabors/pen/zxYexJ">Rachel Nabors' Demo on Synching Animation Clocks</a></p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Animation Synchronization</h2>
+    <div data-height="380" data-theme-id="10784" data-slug-hash="jErmvO" data-default-tab="result" data-user="edeblois" class='codepen'></div>
+    <p class="note tiny">Adapted from <a href="http://codepen.io/rachelnabors/pen/zxYexJ">Rachel Nabors' Demo on Synching Animation Clocks</a></p>
+  </div></section>
+  <section class="slide"><div>
+    <h2>Resources</h2>
+    <ul>
+      <li>https://www.polymer-project.org/platform/web-animations.html</li>
+      <li>https://developers.google.com/web/fundamentals/look-and-feel/animations/css-vs-javascript?hl=en</li>
+      <li>http://www.smashingmagazine.com/2014/11/18/the-state-of-animation-2014/</li>
+      <li>A List Apart Issue #390 by Rachel Nabors</li>
+      <li>http://davidwalsh.name/css-js-animation</li>
+    </ul>
+  </div></section>
+  <section class="slide"><div>
+    <h2>More Resources</h2>
+    <ul>
+      <li>http://www.w3.org/TR/css3-transitions/</li>
+      <li>http://www.w3.org/TR/css3-animations/</li>
+      <li>http://www.w3.org/TR/SVG11/animate.html</li>
+      <li>http://www.w3.org/TR/animation-timing/</li>
+      <li>http://w3c.github.io/web-animations/</li>
+    </ul>
+  </div></section>
+	<section class="slide"><div>
+    <div class="credits">
+      <h2>Estelle DeBlois</h2>
+      <p class="note">
+        <span class="mega-octicon octicon-mark-github"></span> <a href="github.com/brzpegasus">@brzpegasus</a>
+      </p>
+    </div>
+	</div></section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

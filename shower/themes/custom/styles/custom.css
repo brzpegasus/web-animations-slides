@@ -1,0 +1,32 @@
+.accent {
+  color: #47BAD1;
+}
+
+.picture h2 {
+  color: #fff;
+}
+
+.cover.picture {
+  background-color: #fff;
+}
+
+.tiny {
+  font-size: 0.5em;
+}
+
+.center {
+  text-align: center;
+}
+
+.credits {
+  text-align: right;
+  margin-top: 300px;
+}
+
+.front-credits {
+  margin-top: 250px;
+}
+
+.slide.shout h2 {
+  font-size: 4em;
+}
